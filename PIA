@@ -1,0 +1,270 @@
+#include <stdio.h>     // LIBRERIA PRINCIPAL
+#include <stdlib.h>    // LIBRERIA SECUNDARIA
+#include <math.h>      // LIBRERIA FUNCIONES MATEMATICAS
+#include <ctype.h>     // LIBRERIA PARA CARACTERES
+#include <string.h>    // LIBRERIA PARA CADENAS
+#define N 1000
+//----------------------------------------------------------------------------------------------------------------------
+
+// Te quiero mucho arturo <3
+
+// PARA ENTRADA DE CONTRASEÑA Y USUARIO
+
+// VARIABLES DEL SWITCH PRINCIPAL
+int OP;                  // PARA PERMANECER EN EL SWITCH	
+int OP1, OP2, OP3, OP4;  // PARA PERMANECER EL LOS SWITCHS DE LOS SUBMENUS CORRESPONDIENTES
+char OPS1;               // PARA PERMANECER EN SUBMENU 1
+char OPS2;               // PARA PERMANECER EN SUBMENU 2
+char OPS3;               // PARA PERMANECER EN SUBMENU 3
+char OPS4;               // PARA PERMANECER EN SUBMENU 4
+//----------------------------------------------------------------------------------------------------------------------
+struct DIRECCION{            // ESTRUCTURA DE DIRECCION
+	char  CALLE[21];         // ALMACENA LA CALLE DE LA DIRECCION
+	char  COLONIA[21];       // ALMACENA LA COLONIA DE LA DIRECCION
+	int   NUMERO;            // ALMACENA EL NUMERO DE CASA
+	int   CP;                // ALMACENA EL NUMERO DEL CODIGO POSTAL
+};
+typedef struct{             // ESTRUCTURA CLIENTES
+    int     ID;              // ALMACENA EL NUMERO DE IDENTIFICACION; QUE NUNCA SE REPITE
+	char    NOMBRE[50];      // ALMACENA EL NOMRBRE DEL CLIENTE
+	char    CORREO[50];      // ALMACENA EL CORREO DEL CLIENTE
+	char    TELEFONO[20];        // ALMACENA EL TELEFONO DEL CLIENTE
+	struct  DIRECCION DR;    // ALMACENA LOS DATOS DE LA ESTRUCTURA DIRECCION
+	int     ESTATUS;	     // ALMACENA EL ESTATUS 1) ACTIVO Y 0) INACTIVO
+	char    STATUS[20];      // ALMACENA EL ESTATUS EN CADENA (PALABRA)
+	char    DIR[30];
+}CLIENTES;
+CLIENTES C;   // "ARREGLO" DE LA ESTRUCTURA QUE CONTIENE INFORMACION DE LOS CLIENTES
+//----------------------------------------------------------------------------------------------------------------------
+// CABECERAS DE FUNCIONES ----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+int main(void){
+	do{ // PARA INICIAR AL MENU PRINCIPAL ------------------------------------------------------------------------------
+	    printf("\n MENU PRINCIPAL DE OPCIONES \n\n");
+		printf("\n 1) Clientes ");
+		printf("\n 2) Ventas ");
+		printf("\n 3) Nuevos productos ");
+		printf("\n 4) Inventario ");
+		printf("\n 5) Salir ");
+		printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		scanf("%d", &OP);
+		system("CLS");	
+		switch(OP){ 
+		// ADELA --------------------------------------------------------------------------------------------------------
+			case 1: // INGRESAR AL SUBMENU NUMERO 1 CLIENTES
+			    do{
+				    printf("\n SUBMENU DE OPCIONES ( 1 ) \n");
+				    printf("\n ---- CLIENTES ---- \n");
+		            printf("\n 1) Nuevo cliente ");
+		            printf("\n 2) Eliminar cliente ");
+		            printf("\n 3) Consulta de cliente ");
+		            printf("\n 4) Regresar al menu principal ");
+		            printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		            scanf("%d", &OP1);
+		            system("CLS");
+		            switch(OP1){
+		        	    case 1: // INGRESA A NUEVO CLIENTE SUBMENU 1
+		        		    break;
+		        	    case 2: // INGRESA A ELIMINAR CLIENTE SUBMENU 1
+		        		    break;
+		        	    case 3: // INGRESA A CONSULTAR CLIENTE SUBMENU 1
+		        	        do{
+				                printf("\n ---- CONSULTA DE CLIENTES ---- \n");
+		                        printf("\n a) Por nombre ");
+		                        printf("\n b) Por clave ");
+		                        printf("\n c) Regresar al submenu ");
+		                        printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		                        scanf("%c", &OPS1);
+		                        system("CLS");
+		                        switch(toupper(OPS1)){
+		                    	    case 'A': // CONSULTA DE CLIENTES POR NOMBRE
+		                    		    break;
+		                    	    case 'B': // CONSULTA DE CLIENTES POR CLAVE
+		                    		    break;
+		                    	    case 'C': // SALIR AL SUBMENU DE CLIENTES
+		                    	        printf("\n"); printf(" Usted ha elegido salir al submenu de clientes. "); 
+				                        printf("\n"); printf("\n"); system("pause");
+		                    		    break;
+		                    	    default:
+		                    		    printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				                        printf("\n"); printf("\n"); 
+							    }
+						}while(OPS1!='C' && OPS1!='c');
+		        break;
+		        	    case 4: // SALE AL MENU PRINCIPAL SUBMENU 1
+		        	    printf("\n"); printf(" Usted ha elegido salir al menu principal. "); 
+				        printf("\n"); printf("\n"); system("pause");
+		        		break;
+		        	default: // OPCION INVALIDA EN SUBMENU 
+		        	    printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				        printf("\n"); printf("\n"); 
+				}
+			}while(OP1!=4);
+				break;
+		// --------------------------------------------------------------------------------------------------------------
+		// LUCAS --------------------------------------------------------------------------------------------------------		
+			case 2: // INGRESAR AL SUBMENU NUMERO 2 VENTAS
+			    do{
+			    	printf("\n SUBMENU DE OPCIONES ( 2 )\n\n");
+			    	printf("\n ---- VENTAS ---- \n");
+		            printf("\n 1) Venta ");
+		            printf("\n 2) Reporte venta ");
+		            printf("\n 3) Regresar al menu principal ");
+		            printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		            scanf("%d", &OP2);
+		            system("CLS");
+		            switch(OP2){
+		            	case 1: // INGRESA A VENTA
+		            		break;
+		            	case 2: // INGRESA A REPORTE VENTA
+		            	    do{
+		            	    	printf("\n ---- REPORTE DE VENTA ---- \n");
+		                        printf("\n a) Venta del dia ");
+		                        printf("\n b) Por cliente ");
+		                        printf("\n c) Regresar al submenu ");
+		                        printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		                        scanf("%c", &OPS2);
+		                        system("CLS");
+		                        switch(toupper(OPS2)){
+		                        	case 'A': // INGRESA A VENTA DEL DIA SUBMENU 2
+		                        		break;
+		                        	case 'B': // INGRESA A POR CLIENTE SUBMENU 2
+		                        		break;
+		                        	case 'C': // REGRESA AL SUBMENU DE VENTAS
+		                        		printf("\n"); printf(" Usted ha elegido salir al submenu de ventas. "); 
+				                        printf("\n"); printf("\n"); system("pause");
+		                        		break;
+		                        	default: // OPCION INVALIDA PARA EL SUBMENU 2
+		                        	    printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				                        printf("\n"); printf("\n");	
+		                        		
+								}
+							}while(OPS2!='C' && OPS2!='c');
+		            		break;
+		            	case 3: // REGRESA AL MENU PRINCIPAL
+		            	    printf("\n"); printf(" Usted ha elegido salir al menu principal. "); 
+				            printf("\n"); printf("\n"); system("pause");
+		            		break;
+		            	default: // OPCION INVALIDA PARA EL SUBMENU 2
+		            	    printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				            printf("\n"); printf("\n");	
+		            		
+					}
+				}while(OP2!=3);
+				break;
+		// --------------------------------------------------------------------------------------------------------------
+		// CESAR --------------------------------------------------------------------------------------------------------
+			case 3: // INGRESAR AL SUBMENU NUMERO 3 NUEVO PRODUCTO
+			    do{
+			    	printf("\n SUBMENU DE OPCIONES ( 3 ) \n");
+				    printf("\n ---- NUEVO PRODUCTO ---- \n");
+		            printf("\n 1) Nuevo Producto ");
+		            printf("\n 2) Editar producto ");
+		            printf("\n 3) Consulta producto ");
+		            printf("\n 4) Regresar al menu principal ");
+		            printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		            scanf("%d", &OP3);
+		            system("CLS");
+		            switch(OP3){
+		            	case 1: // INGRESA A NUEVO PRODUCTO
+		            		break;
+		            	case 2: // INGRESA A EDITAR PRODUCTO
+		            		break;
+		            	case 3: // INGRESA A CONSULTA DE PRODUCTO
+		            	    do{
+		            	        printf("\n ---- CONSULTA DE PRODUCTO ---- \n");
+		                        printf("\n a) Por tipo de producto ");
+		                        printf("\n b) Por clave ");
+		                        printf("\n c) Regresar al submenu ");
+		                        printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		                        scanf("%c", &OPS3);
+		                        system("CLS");
+								switch(toupper(OPS3)){
+									case 'A': // INGRESA A CONSULTAR PRODUCTO POR TIPO DE PRODUCTO
+										break;
+									case 'B': // INGRESA A CONSULTAR PRODUCTO POR CLAVE
+										break;
+									case 'C': // REGRESA AL SUBMENU 3
+										printf("\n"); printf(" Usted ha elegido salir al submenu de nuevo producto "); 
+				                        printf("\n"); printf("\n"); system("pause");
+										break;
+									default: // OPCION INVALIDA SUBMENU 3
+										printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				                        printf("\n"); printf("\n");	
+								}	
+							}while(OPS3!='C' && OPS3!='c');
+		            		break;
+		            	case 4: //REGRESAR AL MENU PRINCIPAL
+		            		printf("\n"); printf(" Usted ha elegido salir al menu principal. "); 
+				            printf("\n"); printf("\n"); system("pause");
+		            		break;
+		            	default: // OPCION INVALIDA PARA EL SUBMENU 3
+		            		printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				            printf("\n"); printf("\n");	
+					}
+				}while(OP3!=4);
+				break;
+		// --------------------------------------------------------------------------------------------------------------
+		// SAUL ---------------------------------------------------------------------------------------------------------
+			case 4: // INGRESAR AL SUBMENU NUMERO 4 REABASTECIMIENTO
+			    do{
+			    	printf("\n SUBMENU DE OPCIONES ( 4 ) \n");
+				    printf("\n ---- REABASTECIMIENTO ---- \n");
+		            printf("\n 1) Reabastecer producto ");
+		            printf("\n 2) Inventario ");
+		            printf("\n 3) Regresar al menu principal ");
+		            printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		            scanf("%d", &OP4);
+		            system("CLS");
+		            switch(OP4){
+		            	case 1:
+		            		break;
+		            	case 2:
+		            		do{
+		            			printf("\n ---- INVENTARIO ---- \n");
+		                        printf("\n a) Completo ");
+		                        printf("\n b) Por tipo de producto ");
+		                        printf("\n c) Regresar al submenu ");
+		                        printf("\n\n %cQue accion desea realizar%c: ", 168, 63);
+		                        scanf("%c", &OPS4);
+		                        system("CLS");
+		                        switch(toupper(OPS4)){
+		                        	case 'A': // INGRESA A INVENTARIO POR COMPLETO
+		                        		break;
+		                        	case 'B': // INGRESA A INVENTARIO POR TIPO DE PRODUCTO
+		                        		break;
+		                        	case 'C': // REGRESAR AL SUBMENU
+		                        		printf("\n"); printf(" Usted ha elegido salir al submenu. "); 
+				                        printf("\n"); printf("\n"); system("pause");
+		                        		break;
+		                        	default: // OPCION INVALIDA
+		                        		printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				                        printf("\n"); printf("\n");
+								}
+							}while(OPS4!='C' && OPS4!='c');
+		            		break;
+		            	case 3: // REGRESAR AL MENU PRINCIPAL
+		            		printf("\n"); printf(" Usted ha elegido salir al menu principal. "); 
+				            printf("\n"); printf("\n"); system("pause");
+		            		break;
+		            	default: // OPCION INVALIDA SUBMENU 4
+		            		printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				            printf("\n"); printf("\n");
+					}
+				}while(OP4!=3);
+				break;
+		// --------------------------------------------------------------------------------------------------------------
+			case 5: // SALIDA DEL MENU
+				printf("\n"); printf(" Usted ha elegido salir. "); 
+				printf("\n"); printf("\n");
+				break;
+			default: // OPCION INVALIDA PARA EL MENU PRINCIPAL
+				printf("\n"); printf(" OPCION INVALIDA!!! "); 
+				printf("\n"); printf("\n");	
+		}
+	}while(OP!=5);
+	system("pause");
+	return 0;
+}
+//----------------------------------------------------------------------------------------------------------------------
